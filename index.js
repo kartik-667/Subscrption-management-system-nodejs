@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
 import subsRouter from './routes/subscription.route.js'
+import connectDB from './config/db.config.js'
 const app=express()
 
 dotenv.config()
@@ -17,7 +18,8 @@ app.use('/api/v1/users',userRouter)
 app.use('/api/v1/subscriptions',subsRouter)
 
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT,async ()=>{
     console.log("listening on given port");
+    await connectDB()
     
 })
