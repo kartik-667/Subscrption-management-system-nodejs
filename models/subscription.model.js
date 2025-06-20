@@ -87,4 +87,5 @@ subscriptionSchema.pre('save',(next)=>{
 
 })
 
-export default Subscription=mongoose.model('Subscription',subscriptionSchema)
+const  Subscription=mongoose.model('Subscription',subscriptionSchema)
+export default Subscription

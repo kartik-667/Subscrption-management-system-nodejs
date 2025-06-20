@@ -7,10 +7,12 @@ import subsRouter from './routes/subscription.route.js'
 import connectDB from './config/db.config.js'
 import cookieParser from 'cookie-parser'
 
-
-const app=express()
+const JWT_SECRET=process.env.JWT_SECRET
 
 dotenv.config()
+const app=express()
+
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
