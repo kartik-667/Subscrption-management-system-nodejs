@@ -5,9 +5,16 @@ import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
 import subsRouter from './routes/subscription.route.js'
 import connectDB from './config/db.config.js'
+import cookieParser from 'cookie-parser'
+
+
 const app=express()
 
 dotenv.config()
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
+
 
 app.get("/",(req,res)=>{
     res.send("home page: SUBSCRIPTION TRACKER API")
