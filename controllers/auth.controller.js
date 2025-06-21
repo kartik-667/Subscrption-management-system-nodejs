@@ -24,7 +24,7 @@ export const signup=async(req,res)=>{
             password:hashedPassword
         })
 
-
+        //userId will be name in token
         const token=jwt.sign({userId:newUser._id},process.env.JWT_SECRET)
         res.cookie("token",token)
 
@@ -90,4 +90,15 @@ export const signin=async(req,res)=>{
         console.log(error.message);
     }
 
+}
+
+export const signout=async(req,res)=>{
+    try {
+        res.cookie("token","",{expires:new Date(0)})
+        return res.status(200).json({msg:"signed out successfully"})
+        
+    } catch (error) {
+        res.status(500).json({msg:error.message})
+        console.log(error.message);
+    }
 }
